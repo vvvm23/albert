@@ -24,7 +24,7 @@ class PretrainTransformerWrapper(HelperModule):
         return cls_logits, token_logits
 
 """
-    Multi-label classifcation wrapper for Transformers
+    Multi-label classification wrapper for Transformers
     Implements multi-label classification on the CLR token 
 """
 class MultiLabelTransformerWrapper(HelperModule):
@@ -38,3 +38,33 @@ class MultiLabelTransformerWrapper(HelperModule):
     def forward(self, x: torch.FloatTensor, seg: torch.LongTensor, mask: torch.BoolTensor):
         c = self.base(x, seg, mask)[:, 0] # only grab [CLS] token
         return self.out(c)
+
+"""
+    Per-token classification wrapper for Transformers
+"""
+class TaggingTransformerWrapper(HelperModule):
+    def build(self, base: nn.Module, nb_classes: int, dropout: float = 0.2):
+        self.base = base
+        self.out = nn.Sequential(
+            nn.Dropout(dropout),
+            nn.Linear(self.base.mlp_dim, nb_classes),
+        )
+
+    def forward(self, x: torch.FloatTensor, seg: torch.LongTensor, mask: torch.BoolTensor):
+        c = self.base(x, seg, mask) # grab ALL tokens
+        return self.out(c) # apply mlp to all tokens
+
+"""
+    Span-start and span-end prediction wrapper for Transformers.
+    Predicts the start and end tokens of the answer to a 
+    question-paragraph tokenized sentence pair.
+
+    TODO: figure out how two weight matrices work to get 
+    distribution over all sequence positions.
+"""
+class QuestionAnsweringTransformerWrapper(HelperModule):
+    def build(self, base: nn.Module):
+        pass
+
+    def forward(self, x: torch.FloatTensor, seg: torch.LongTensor, mask: torch.BoolTensor):
+        pass
