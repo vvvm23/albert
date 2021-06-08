@@ -35,14 +35,16 @@ This repository will contain a PyTorch implementation of ALBERT and various wrap
 ---
 
 ### Roadmap
-- [ ] ALBERT Core
-- [ ] Pretraining Wrappers
+- [X] ALBERT Core
+- [X] BERT alternative option
+- [X] Pretraining Wrappers
 - [ ] Finetuning Wrappers
 - [ ] Preprocessing Pipeline
     - [ ] Native (Slower)
     - [ ] 🤗Version (Faster)
 - [ ] Training Scripts
 - [ ] Inference Scripts
+- [ ] More attention approximation options
 - [ ] Fancy Logging
 - [ ] Automatic Mixed-Precision Operations
 - [ ] Distributed Training

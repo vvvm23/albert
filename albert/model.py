@@ -85,6 +85,7 @@ class TransformerLayer(HelperModule):
 
 """
     Transformer class with cross-layer parameter sharing -- ie. ALBERT
+    TODO: Add learned positional embeddings like huggingface version?
 """
 class ALBERT(HelperModule):
     def build(self, 
