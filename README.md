@@ -5,12 +5,17 @@ Original paper can be found [here](https://arxiv.org/abs/1909.11942).
 
 This repository will contain a PyTorch implementation of ALBERT and various wrappers around it for pre-training and fine-tuning tasks.
 
+I will use 🤗Tokenizers and 🤗Datasets for tokenization and dataset
+preprocessing. A native Python implementation for this simply cannot compete
+speed wise. 
+
 ## Repository Structure
 - `albert/`: directory containing ALBERT architecture implementation and
   associated wrapper modules.
 - `trainer/`: directory containing trainer classes for different language model
   tasks.
 - `main-TASK.py`: main script to run the task `TASK`.
+- `hps.py`: Hyperparameter configuration file.
 
 ## Usage
 `TBA`
@@ -45,8 +50,8 @@ This repository will contain a PyTorch implementation of ALBERT and various wrap
 - [X] Pretraining Wrappers
 - [ ] Finetuning Wrappers
 - [ ] Preprocessing Pipeline
-    - [ ] Native (Slower)
     - [ ] 🤗Version (Faster)
+    - [ ] Native (Slower)
 - [ ] Training Scripts
 - [ ] Inference Scripts
 - [ ] More attention approximation options

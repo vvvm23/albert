@@ -46,7 +46,6 @@ _albert_xlarge = {
 }
 
 HPS = {
-    ('pretrain', 'debug'): SimpleNamespace(**(_common | _pretrain | _albert_shared | _albert_debug)),
     ('pretrain', 'base'): SimpleNamespace(**(_common | _pretrain | _albert_shared | _albert_base)),
     ('pretrain', 'large'): SimpleNamespace(**(_common | _pretrain | _albert_shared | _albert_large)),
     ('pretrain', 'xlarge'): SimpleNamespace(**(_common | _pretrain | _albert_shared | _albert_xlarge)),

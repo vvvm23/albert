@@ -20,7 +20,7 @@ class MultiLabelTrainer:
 
         self.scaler = torch.cuda.amp.GradScaler() # for automatic mixed-precision
 
-        self.update_frequency = math.ceil(cfg.batch_size / cfg.mini_batch_size)
+        self.update_frequency = ceil(cfg.batch_size / cfg.mini_batch_size)
         self.train_steps = 0
 
     """
@@ -113,7 +113,7 @@ class MultiClassTrainer:
 
         self.scaler = torch.cuda.amp.GradScaler() # for automatic mixed-precision
 
-        self.update_frequency = math.ceil(cfg.batch_size / cfg.mini_batch_size)
+        self.update_frequency = ceil(cfg.batch_size / cfg.mini_batch_size)
         self.train_steps = 0
 
     """
