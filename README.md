@@ -6,10 +6,14 @@ Original paper can be found [here](https://arxiv.org/abs/1909.11942).
 This repository will contain a PyTorch implementation of ALBERT and various wrappers around it for pre-training and fine-tuning tasks.
 
 ## Repository Structure
-`TODO: Detail on structure of this repository`
+- `albert/`: directory containing ALBERT architecture implementation and
+  associated wrapper modules.
+- `trainer/`: directory containing trainer classes for different language model
+  tasks.
+- `main-TASK.py`: main script to run the task `TASK`.
 
 ## Usage
-`TODO: Usage Instructions`
+`TBA`
 
 ### Data Preparation
 `TBA`
@@ -27,7 +31,8 @@ This repository will contain a PyTorch implementation of ALBERT and various wrap
 `TBA`
 
 ## Modifications
-`TODO: Detail deviations from original work`
+- Option of using Nyströmformer self-attention approximations rather than
+  softmax attention. Defaults to Nyströmformer.
 
 ## Checkpoints
 `TODO: Add model checkpoints`
@@ -57,6 +62,18 @@ This repository will contain a PyTorch implementation of ALBERT and various wrap
       author={Zhenzhong Lan and Mingda Chen and Sebastian Goodman and Kevin Gimpel and Piyush Sharma and Radu Soricut},
       year={2020},
       eprint={1909.11942},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
+
+**Nyströmformer: A Nyström-Based Algorithm for Approximating Self-Attention**
+```
+@misc{xiong2021nystromformer,
+      title={Nystr\"omformer: A Nystr\"om-Based Algorithm for Approximating Self-Attention}, 
+      author={Yunyang Xiong and Zhanpeng Zeng and Rudrasis Chakraborty and Mingxing Tan and Glenn Fung and Yin Li and Vikas Singh},
+      year={2021},
+      eprint={2102.03902},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
