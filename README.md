@@ -18,22 +18,41 @@ speed wise.
 - `hps.py`: Hyperparameter configuration file.
 
 ## Usage
-`TBA`
-
-### Data Preparation
-`TBA`
-
 ### Configuration
-`TBA`
+Configurations are provided via `types.SimpleNamespace` to generate namespaces from Python dictionaries.
+
+- `_common` contains shared hyperparameters for all tasks.
+- `_pretrain` contains hyperparameters for pretraining tasks.
+- Dictionaries with `_albert_` as a suffix are for specific model configurations
+  which can be selected with the `--model` flag in training scripts.
+- The exception to the above is `_albert_shared` which is shared hyperparameters
+  for all configurations.
+- More specific configurations override common configurations
+
+To select a configuration, import `HPS` from `hps.py` then retrieve the
+namespace using a `(task, model)` key-tuple.
 
 ### Model Pre-training
-`TBA`
+Start the pre-training script:
+```
+python main-pretrain.py
+```
+
+With optional flags:
+```
+--cpu           # do not use GPU acceleration, only use the CPU.
+--tqdm-off      # disable the use of tqdm loading bars. useful when running on a server.
+--small         # use a smaller split of the dataset. useful for debugging.
+--model         # select model to use. defaults to `base`. see `hps.py` for details.
+--no-save       # do not save outputs to disk. all data will be lost on termination. note that HuggingFace may still cache results.
+```
+The script will save outputs to `runs/pretrain-{DATE}_{TIME}/` where you can retrieve model checkpoints.
 
 ### Model Fine-tuning
-`TBA`
+`TODO: Instructions on fine-tuning for downstream tasks`
 
 ### Inference
-`TBA`
+`TODO: Instructions on model inference`
 
 ## Modifications
 - Option of using Nyströmformer self-attention approximations rather than
@@ -50,14 +69,18 @@ speed wise.
 - [X] Pretraining Wrappers
 - [ ] Finetuning Wrappers
 - [ ] Preprocessing Pipeline
-    - [ ] 🤗Version (Faster)
+    - [X] 🤗Version (Faster)
     - [ ] Native (Slower)
-- [ ] Training Scripts
+- [X] Pre-training Scripts
+- [ ] Fine-tuning Scripts
 - [ ] Inference Scripts
 - [ ] More attention approximation options
 - [ ] Fancy Logging
 - [ ] Automatic Mixed-Precision Operations
 - [ ] Distributed Training
+
+### Code References
+- [Nyströmformer self-attention approximation implementation](https://github.com/lucidrains/nystrom-attention) - [@lucidrains](https://github.com/lucidrains)
 
 ### Citations
 **ALBERT: A Lite BERT for Self-supervised Learning of Language Representations**
