@@ -12,14 +12,9 @@ import tqdm
 import argparse
 import datetime
 import functools
-import random
-import time
 from pathlib import Path
 
-import rich
-import rich.progress
-
-log = lambda s: print(f"> {s}")
+log = lambda s: print(f"> {s}") # TODO: Colour!
 
 from hps import HPS
 from helper import get_device, get_parameter_count
