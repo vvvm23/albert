@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from .helper import HelperModule
+
 """
     Pre-training wrapper for Transformers
     Implements Mask LM (Cloze) and Sentence-order-prediction (SOP)
@@ -24,10 +26,10 @@ class PretrainTransformerWrapper(HelperModule):
         return cls_logits, token_logits
 
 """
-    Multi-label classification wrapper for Transformers
-    Implements multi-label classification on the CLR token 
+    Sentence Level Classification wrapper for Transformers
+    Used for multi-label / multi-class classification on the CLR token 
 """
-class MultiLabelTransformerWrapper(HelperModule):
+class ClassificationTransformerWrapper(HelperModule):
     def build(self, base: nn.Module, nb_classes: int, dropout: float = 0.2):
         self.base = base
         self.out = nn.Sequential(
